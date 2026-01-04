@@ -1,0 +1,72 @@
+.wrap {
+  /* This is the overlap: pull the whole section upward */
+  position: relative;
+  z-index: 1;
+  transform: none;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.inner {
+  display: flex;
+  justify-content: center;
+}
+
+.card {
+  width: min(1100px, 100%);
+  background: #111;
+  color: #fff;
+  border-radius: 14px;
+  padding: 36px 40px;
+
+  /* subtle “lift” like a card sitting above the hero */
+  box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+.kicker {
+  margin: 0;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+
+.title {
+  margin: 10px 0 0;
+  font-size: clamp(22px, 2.4vw, 30px);
+  font-weight: 800;
+  letter-spacing: 0.01em;
+}
+
+.body {
+  margin-top: 12px;
+  max-width: 70ch;
+  opacity: 0.85;
+  line-height: 1.6;
+}
+
+.actions {
+  margin-top: 18px;
+}
+
+.primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  color: #111;
+  padding: 12px 18px;
+  border-radius: 6px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.primary:hover {
+  filter: brightness(0.95);
+}
+
+@media (max-width: 640px) {
+  .card {
+    padding: 24px 20px;
+  }
+}

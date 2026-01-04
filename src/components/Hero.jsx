@@ -1,31 +1,42 @@
 import styles from "./Hero.module.css";
 
 export default function Hero() {
-    return (
-        <section id="home" className={styles.hero}>
-            <video
-                className={styles.video}
-                autoPlay
-                loop
-                muted
-                playsInline
-                preload="metadata"
-                poster="/video/hero-poster.jpg"
-            >
-                <source src="/video/hero.mp4" type="video/mp4" />
-            </video>
+  return (
+    <section id="home" className={styles.hero}>
+      {/* Top media strip */}
+      <div className={styles.media}>
+        <video
+          className={styles.video}
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="metadata"
+          poster="/video/hero-poster.jpg"
+        >
+          <source src="/video/hero.mp4" type="video/mp4" />
+        </video>
+        <div className={styles.mediaOverlay} />
+      </div>
 
-            <div className={styles.overlay} />
+      {/* Seam title (sits right on the boundary) */}
+      <div className={styles.seamTitle}>
+        <h1 className={styles.title}>
+          <span>TETRAD</span>
+          <span>BUILDING</span>
+          <span>GROUP, LLC</span>
+        </h1>
+      </div>
 
-            <div className={`container ${styles.content}`}>
-                <h1 className={styles.title}>Tetrad Construction</h1>
-                <p className={styles.subtitle}>Partnering with Clients from Concept to Completion</p>
-            </div>
-
-            <div className={styles.actions}>
-                <a className={styles.primary} href="#contact">Contact Us</a>
-                <a className={styles.secondary} href="#services">Our Services</a>
-            </div>
-        </section>
-    );
+      {/* Maroon panel */}
+      <div className={styles.maroon}>
+        <p className={styles.tagline}>
+          PARTNERING WITH CLIENTS FROM CONCEPT TO COMPLETION
+        </p>
+        <a className={styles.cta} href="#contact">
+          Contact Us
+        </a>
+      </div>
+    </section>
+  );
 }

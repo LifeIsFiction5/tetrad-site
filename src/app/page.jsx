@@ -4,7 +4,7 @@ import Hero from "@/components/Hero";
 import ServicesIntro from "@/components/ServicesIntro";
 import AboutCard from "../components/AboutCard";
 import AboutBand from "@/components/AboutBand";
-import TestimonialCard from "../components/TestimonialCard";
+import TestimonialCarousel from "../components/TestimonialCarousel";
 
 export default function Home() {
   return (
@@ -12,7 +12,7 @@ export default function Home() {
       <SiteHeader />
       <Hero />
       <AboutCard />
-      <TestimonialCard/>
+      <TestimonialCarousel/>
       <AboutBand />
       {/* TODO: Gallery component */}
     </>

@@ -1,0 +1,164 @@
+.section {
+  background: var(--color-maroon);
+  padding: 90px 0;
+  color: #fff;
+}
+
+.inner {
+  display: grid;
+  gap: 18px;
+}
+
+.header {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.title {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  opacity: 0.95;
+}
+
+.controls {
+  display: flex;
+  gap: 10px;
+}
+
+.navBtn {
+  height: 40px;
+  width: 44px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.04);
+  color: #fff;
+  cursor: pointer;
+}
+
+.navBtn:hover {
+  background: rgba(255,255,255,0.08);
+}
+
+.navBtn:focus-visible {
+  outline: 2px solid rgba(255,255,255,0.55);
+  outline-offset: 3px;
+}
+
+.card {
+  width: min(1100px, 100%);
+  justify-self: center;
+
+  position: relative;
+  overflow: hidden;
+
+  padding: 36px 40px;
+  border-radius: 14px;
+
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(255,255,255,0.03);
+
+  box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+  transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+}
+
+/* subtle “lift” */
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 28px 80px rgba(0,0,0,0.45);
+  border-color: rgba(255,255,255,0.18);
+}
+
+/* Glow sweep overlay */
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  /* a narrow diagonal highlight */
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    rgba(255,255,255,0.00) 35%,
+    rgba(255,255,255,0.10) 50%,
+    rgba(255,255,255,0.00) 65%,
+    transparent 100%
+  );
+
+  transform: translateX(-120%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* animate sweep on hover */
+.card:hover::before {
+  opacity: 1;
+  animation: sweep 900ms ease forwards;
+}
+
+@keyframes sweep {
+  from { transform: translateX(-120%); }
+  to   { transform: translateX(120%); }
+}
+
+.quote {
+  margin: 0;
+  font-style: italic;
+  font-size: clamp(18px, 2.2vw, 24px);
+  line-height: 1.65;
+  max-width: 75ch;
+
+  /* helps glow feel like it “passes over text” */
+  position: relative;
+  z-index: 1;
+}
+
+.author {
+  margin: 16px 0 0;
+  font-weight: 800;
+  opacity: 0.9;
+  position: relative;
+  z-index: 1;
+}
+
+.dots {
+  margin-top: 22px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.dot {
+  height: 10px;
+  width: 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.35);
+  background: transparent;
+  cursor: pointer;
+}
+
+.dotActive {
+  background: rgba(255,255,255,0.8);
+  border-color: rgba(255,255,255,0.8);
+}
+
+.dot:focus-visible {
+  outline: 2px solid rgba(255,255,255,0.55);
+  outline-offset: 3px;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .card:hover {
+    transition: none;
+    transform: none;
+  }
+  .card:hover::before {
+    animation: none;
+    opacity: 0;
+  }
+}

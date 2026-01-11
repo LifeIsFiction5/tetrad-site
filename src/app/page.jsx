@@ -6,6 +6,7 @@ import TestimonialCarousel from "../components/TestimonialCarousel";
 import ServiceShowcase from "../components/ServiceShowcase";
 import ServicesGrid from "../components/ServicesGrid";
 import ContactSection from "../components/ContactSection";
+import Footer from "../components/Footer";
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
       <ServicesIntro />
       <ServicesGrid />
       <ContactSection />
+      <Footer />
     </>
   );
 }

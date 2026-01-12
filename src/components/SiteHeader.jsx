@@ -1,4 +1,5 @@
 import styles from "./SiteHeader.module.css";
+import Link from "next/link";
 
 export default function SiteHeader() {
     return (
@@ -10,7 +11,7 @@ export default function SiteHeader() {
                 <a href="#home">Home</a>
                 <a href="#mission">Mission</a>
                 <a href="#services">Services</a>
-                <a href="#portfolio">Portfolio</a>
+                <Link href="/projects">Projects</Link>
                 <a href="#more">More</a>
             </nav>
 

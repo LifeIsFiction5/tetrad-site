@@ -1,0 +1,27 @@
+.main {
+  padding: 90px 0;
+  background: #0e0e0e;
+  color: #fff;
+}
+
+.inner {
+  display: grid;
+  gap: 26px;
+}
+
+.header {
+  max-width: 70ch;
+}
+
+.title {
+  margin: 0;
+  font-size: clamp(34px, 4vw, 54px);
+  font-weight: 900;
+  letter-spacing: 0.02em;
+}
+
+.subtitle {
+  margin: 12px 0 0;
+  opacity: 0.8;
+  line-height: 1.7;
+}

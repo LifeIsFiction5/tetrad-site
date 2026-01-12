@@ -2,7 +2,25 @@
   background: #0a0a0a;
   color: #fff;
   padding: 44px 0;
-  border-top: 1px solid rgba(255,255,255,0.10);
+  border-top: 0;
+  position: relative;
+}
+
+.footer::before {
+    content: "";
+    position: absolute;
+    top:0;
+    left:0;
+    right:9;
+    height: 2px;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        var(--color-maroon),
+        transparent
+    );
+    opacity: 0.95;
 }
 
 .inner {

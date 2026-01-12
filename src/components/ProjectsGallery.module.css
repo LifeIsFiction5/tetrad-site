@@ -1,0 +1,122 @@
+.grid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.tile {
+  position: relative;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  border-radius: 14px;
+  overflow: hidden;
+  cursor: pointer;
+  aspect-ratio: 4 / 3;
+
+  border: 1px solid rgba(255,255,255,0.10);
+  box-shadow: 0 18px 55px rgba(0,0,0,0.35);
+  transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+}
+
+.tile:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 28px 80px rgba(0,0,0,0.45);
+  border-color: rgba(255,255,255,0.18);
+}
+
+.image {
+  object-fit: cover;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.35), rgba(0,0,0,0.05));
+  pointer-events: none;
+}
+
+/* Lightbox */
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.72);
+  display: grid;
+  place-items: center;
+  z-index: 999;
+  padding: 18px;
+}
+
+.lightbox {
+  width: min(1100px, 100%);
+  position: relative;
+}
+
+.media {
+  position: relative;
+  width: 100%;
+  height: min(74vh, 680px);
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.14);
+  box-shadow: 0 30px 120px rgba(0,0,0,0.55);
+  background: rgba(0,0,0,0.35);
+}
+
+.lightboxImg {
+  object-fit: contain;
+}
+
+.caption {
+  margin: 12px 0 0;
+  text-align: center;
+  opacity: 0.9;
+}
+.counter {
+  opacity: 0.75;
+}
+
+.closeBtn {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  height: 42px;
+  width: 42px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.18);
+  background: rgba(0,0,0,0.45);
+  color: #fff;
+  cursor: pointer;
+}
+
+.prevBtn,
+.nextBtn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 46px;
+  width: 46px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.18);
+  background: rgba(0,0,0,0.45);
+  color: #fff;
+  cursor: pointer;
+}
+
+.prevBtn { left: -10px; }
+.nextBtn { right: -10px; }
+
+.prevBtn:hover,
+.nextBtn:hover,
+.closeBtn:hover {
+  background: rgba(255,255,255,0.10);
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .prevBtn { left: 6px; }
+  .nextBtn { right: 6px; }
+  .closeBtn { right: 6px; top: 6px; }
+}

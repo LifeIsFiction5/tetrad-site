@@ -21,7 +21,7 @@ export default function Hero() {
 
       {/* Seam title (sits right on the boundary) */}
       <div className={styles.seamTitle}>
-        <h1 className={styles.title}>
+        <h1 className={`${styles.title} brandHeading`}>
           <span>TETRAD</span>
           <span>BUILDING</span>
           <span>GROUP, LLC</span>

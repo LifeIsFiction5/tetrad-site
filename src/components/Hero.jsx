@@ -29,15 +29,28 @@ export default function Hero() {
       </div>
     
 
-      {/* Maroon panel */}
       <div className={styles.maroon}>
-        <div className={styles.maroonInner}>
-        <p className={styles.tagline}> PARTNERING WITH CLIENTS FROM CONCEPT TO COMPLETION </p>
-        <a className={styles.cta} href="#contact">
-          Contact Us
-        </a>
-      </div>
-      </div>
+  <div className={styles.maroonInner}>
+    <p className={styles.tagline}>PARTNERING WITH CLIENTS FROM CONCEPT TO COMPLETION</p>
+
+    <h2 className={styles.maroonTitle}>Talk with our team</h2>
+
+    <p className={styles.maroonBody}>
+      Reliable scheduling, clear communication, and high-quality work — built to meet strict standards.
+    </p>
+
+    <div className={styles.actions}>
+      <a className={styles.primary} href="tel:8163990701">Call 816-399-0701</a>
+      <a className={styles.secondary} href="#contact">Email Us</a>
+    </div>
+
+    <div className={styles.meta}>
+      <span>Est. 2015</span>
+      <span>Telecom / Data</span>
+      <span>Kansas City</span>
+    </div>
+  </div>
+</div>
     </section>
   );
 }

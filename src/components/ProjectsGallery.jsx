@@ -3,21 +3,10 @@
 import { useEffect, useMemo, useState, useCallback } from "react";
 import Image from "next/image";
 import styles from "./ProjectsGallery.module.css";
-
-const defaultImages = [
-  { src: "/gallery/01.jpg", alt: "Project photo 1" },
-  { src: "/gallery/02.jpg", alt: "Project photo 2" },
-  { src: "/gallery/03.jpg", alt: "Project photo 3" },
-  { src: "/gallery/04.jpg", alt: "Project photo 4" },
-  { src: "/gallery/05.jpg", alt: "Project photo 5" },
-  { src: "/gallery/06.jpg", alt: "Project photo 6" },
-  { src: "/gallery/07.jpg", alt: "Project photo 7" },
-  { src: "/gallery/08.jpg", alt: "Project photo 8" },
-  { src: "/gallery/09.jpg", alt: "Project photo 9" },
-];
+import { projectImages } from "@/data/projectsImages";
 
 export default function ProjectsGallery({ items }) {
-  const images = useMemo(() => items ?? defaultImages, [items]);
+  const images = useMemo(() => items ?? projectImages, [items]);
   const total = images.length;
 
   const [openIndex, setOpenIndex] = useState(null);
@@ -69,6 +58,7 @@ export default function ProjectsGallery({ items }) {
               fill
               sizes="(max-width: 900px) 100vw, 33vw"
               className={styles.image}
+              style={{ objectPosition: img.focus ?? "50% 50%" }}
             />
             <span className={styles.overlay} />
           </button>

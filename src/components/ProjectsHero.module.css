@@ -1,0 +1,213 @@
+.hero {
+  background: #0e0e0e;
+  color: #fff;
+}
+
+.stage {
+  position: relative;
+  height: clamp(520px, 78vh, 860px);
+  overflow: hidden;
+}
+
+.layer {
+  position: absolute;
+  inset: 0;
+}
+
+.img {
+  object-fit: cover;
+  filter: saturate(1.05) contrast(1.05);
+  transform: translateZ(0);
+}
+
+/* Pan patterns (Ken Burns-ish). Keep movements subtle. */
+.panA { animation: panA 8.5s ease-in-out both; transform-origin: 20% 40%; }
+.panB { animation: panB 8.5s ease-in-out both; transform-origin: 80% 40%; }
+.panC { animation: panC 8.5s ease-in-out both; transform-origin: 50% 20%; }
+.panD { animation: panD 8.5s ease-in-out both; transform-origin: 50% 80%; }
+
+@keyframes panA {
+  from { transform: scale(1.06) translateX(0); }
+  to   { transform: scale(1.14) translateX(-2.5%); }
+}
+@keyframes panB {
+  from { transform: scale(1.06) translateX(0); }
+  to   { transform: scale(1.14) translateX(2.5%); }
+}
+@keyframes panC {
+  from { transform: scale(1.06) translateY(0); }
+  to   { transform: scale(1.14) translateY(-2.2%); }
+}
+@keyframes panD {
+  from { transform: scale(1.06) translateY(0); }
+  to   { transform: scale(1.14) translateY(2.2%); }
+}
+
+/* crossfade layers */
+.in  { animation: fadeIn 520ms ease both; }
+.out { animation: fadeOut 520ms ease both; }
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 25% 30%, rgba(0,0,0,0.10), rgba(0,0,0,0.55) 55%, rgba(0,0,0,0.78) 100%),
+    linear-gradient(to top, rgba(0,0,0,0.75), rgba(0,0,0,0.25));
+  pointer-events: none;
+}
+
+.grain {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.14;
+  background-image:
+    repeating-linear-gradient(0deg, rgba(255,255,255,0.05) 0, rgba(255,255,255,0.05) 1px, transparent 1px, transparent 2px);
+  mix-blend-mode: overlay;
+}
+
+/* Magazine content */
+.content {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: grid;
+  align-content: center;
+  gap: 14px;
+  padding-top: 40px;
+  max-width: 900px;
+}
+
+.kicker {
+  margin: 0;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+
+.title {
+  margin: 0;
+  font-size: clamp(44px, 6.2vw, 84px);
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+  font-weight: 900;
+  text-shadow: 0 18px 55px rgba(0,0,0,0.55);
+}
+
+.sub {
+  margin: 0;
+  max-width: 52ch;
+  font-size: 16px;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 6px;
+}
+
+.primary,
+.secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 44px;
+  padding: 0 16px;
+  border-radius: 12px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.primary {
+  background: #fff;
+  color: #111;
+}
+
+.secondary {
+  border: 1px solid rgba(255,255,255,0.18);
+  background: rgba(255,255,255,0.06);
+  color: #fff;
+}
+
+.primary:hover { filter: brightness(0.96); transform: translateY(-1px); }
+.secondary:hover { background: rgba(255,255,255,0.10); transform: translateY(-1px); }
+
+.meta {
+  margin-top: 12px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  opacity: 0.85;
+  font-size: 13px;
+}
+
+.caption {
+  max-width: 48ch;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.counter {
+  opacity: 0.8;
+}
+
+/* controls */
+.controls {
+  position: absolute;
+  right: 22px;
+  bottom: 22px;
+  z-index: 3;
+  display: flex;
+  gap: 10px;
+}
+
+.navBtn {
+  height: 44px;
+  width: 48px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.14);
+  background: rgba(0,0,0,0.25);
+  color: #fff;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.navBtn:hover { background: rgba(0,0,0,0.35); }
+
+.navBtn:focus-visible {
+  outline: 2px solid rgba(255,255,255,0.55);
+  outline-offset: 3px;
+}
+
+/* reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .panA, .panB, .panC, .panD { animation: none; }
+  .in, .out { animation: none; }
+  .primary:hover, .secondary:hover { transform: none; }
+}
+
+/* mobile spacing */
+@media (max-width: 640px) {
+  .content {
+    padding-top: 70px;
+  }
+  .controls {
+    right: 14px;
+    bottom: 14px;
+  }
+}

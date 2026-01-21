@@ -1,0 +1,166 @@
+.section {
+  background: #0e0e0e;
+  color: #fff;
+
+  padding: 110px 0 90px;
+  min-height: calc(100vh - 72px);
+  display: flex;
+  align-items: center;
+}
+
+.inner {
+  display: grid;
+  justify-items: center;
+
+  gap: 14px;
+
+  text-align: center;
+}
+
+/* Big, commanding logo */
+.logoFloat {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+
+  display: grid;
+  place-items: center;
+  border-radius: 18px;
+
+  animation: float 6s ease-in-out infinite;
+  filter: drop-shadow(0 18px 55px rgba(0,0,0,0.65));
+}
+
+.logoFloat:focus-visible {
+  outline: 2px solid rgba(255,255,255,0.55);
+  outline-offset: 6px;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-10px); }
+}
+
+/* Pulse state for interaction */
+.logoPulse .logo {
+  transform: scale(1.07);
+  filter:
+    drop-shadow(0 0 26px rgba(255, 0, 0, 0.30))
+    drop-shadow(0 0 60px rgba(255, 0, 0, 0.14))
+    drop-shadow(0 34px 100px rgba(0,0,0,0.65));
+}
+
+.logo {
+  width: clamp(240px, 28vw, 460px);
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  filter: drop-shadow(0 0 18px rgba(255, 0, 0, 0.22));
+  transition: transform 220ms ease, filter 220ms ease;
+  transform: translateZ(0);
+}
+
+.statement {
+  width: min(980px, 100%);
+  position: relative;
+
+
+  min-height: 140px;
+
+  padding: 10px 0;
+
+  overflow: visible;
+}
+
+.layer {
+  position: absolute;
+  inset: 0;
+  padding: 0 18px; /* side padding for narrow screens */
+}
+
+.kicker {
+  margin: 0 0 12px;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  opacity: 0.72;
+}
+
+.text {
+  margin: 0;
+  font-size: clamp(18px, 2.0vw, 22px);
+  line-height: 1.75;
+  opacity: 0.94;
+
+  text-shadow:
+    0 14px 40px rgba(0,0,0,0.55),
+    0 2px 10px rgba(0,0,0,0.45);
+}
+
+/* crossfade */
+.in { animation: fadeIn 500ms ease both; }
+.out { animation: fadeOut 500ms ease both; }
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+.controls {
+  margin-top: 12px;
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.tab {
+  background: transparent;
+  border: 0;
+  padding: 6px 4px;
+
+  color: rgba(255,255,255,0.65);
+  cursor: pointer;
+
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.tab:hover {
+  color: rgba(255,255,255,0.90);
+}
+
+.tabActive {
+  color: rgba(255,255,255,0.98);
+  text-shadow:
+    0 0 10px rgba(255,255,255,0.35),
+    0 0 26px rgba(255, 0, 0, 0.18);
+}
+
+.tab:focus-visible {
+  outline: 2px solid rgba(255,255,255,0.55);
+  outline-offset: 4px;
+  border-radius: 8px;
+}
+
+/* motion respect */
+@media (prefers-reduced-motion: reduce) {
+  .in, .out { animation: none; }
+}
+
+/* small screens: slightly smaller logo, more breathing room */
+@media (max-width: 640px) {
+  .logo {
+    width: clamp(200px, 55vw, 320px);
+  }
+  .layer {
+    padding: 0 10px;
+  }
+}

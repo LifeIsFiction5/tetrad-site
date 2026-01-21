@@ -16,12 +16,12 @@
 }
 
 .img {
-  width: clamp(120px, 14vw, 210px);
+  width: clamp(180px, 22vw, 360px);
   height: auto;
   display: block;
+  margin: 0 auto;
+  filter: drop-shadow(0 16px 40px rgba(0,0,0,0.55));
 
-  /* subtle “cinematic” polish */
-  filter: drop-shadow(0 18px 35px rgba(0,0,0,0.45));
   transform: translateZ(0);
 
   animation: floaty 4.2s ease-in-out infinite;

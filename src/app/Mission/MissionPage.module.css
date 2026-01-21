@@ -1,0 +1,214 @@
+/* Component Module CSS */
+.section {
+  position: relative;
+  padding: 90px 0;
+  background: #111;
+  color: #fff;
+  overflow: hidden;
+}
+
+.section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: min(1100px, 92%);
+  height: 1px;
+  transform: translateX(-50%);
+  background: linear-gradient(to right, transparent, rgba(255,255,255,0.18), transparent);
+  z-index: 3;
+}
+
+.inner {
+  width: min(980px, 92%);
+  margin: 0 auto;
+  display: grid;
+  gap: 28px;
+}
+
+.header {
+  display: grid;
+  gap: 10px;
+  max-width: 70ch;
+  text-align: center;
+}
+
+.kicker {
+  margin: 0;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+
+.title {
+  margin: 0;
+  font-size: clamp(26px, 3vw, 38px);
+  font-weight: 900;
+  letter-spacing: 0.01em;
+  color: #fff;
+}
+
+.subtitle {
+  margin: 10px 0 0;
+  opacity: 0.8;
+  line-height: 1.7;
+  max-width: 70ch;
+}
+
+/* Interactive Card Component */
+.card {
+  position: relative;
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  
+  padding: 22px 22px;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(255,255,255,0.03);
+  
+  box-shadow: 0 18px 55px rgba(0,0,0,0.35);
+  transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+  overflow: hidden;
+}
+
+/* Spotlight effect on hover */
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    500px 220px at var(--mx, 50%) var(--my, 50%),
+    rgba(255,255,255,0.14),
+    transparent 55%
+  );
+  opacity: 0;
+  transition: opacity 220ms ease;
+  pointer-events: none;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 28px 85px rgba(0,0,0,0.45);
+  border-color: rgba(255,255,255,0.18);
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+.card:focus-visible {
+  outline: 2px solid rgba(255,255,255,0.55);
+  outline-offset: 4px;
+}
+
+/* Glass/Frosted Card Variant */
+.glassCard {
+  background: rgba(17, 17, 17, 0.78);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 36px 40px;
+  box-shadow: 0 24px 70px rgba(0,0,0,0.45);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* Button Styles */
+.primaryButton {
+  display: inline-flex;
+  text-decoration: none;
+  font-weight: 800;
+  padding: 12px 18px;
+  border-radius: 10px;
+  background: #fff;
+  color: #111;
+  transition: transform 160ms ease, filter 160ms ease;
+  will-change: transform;
+}
+
+.primaryButton:hover {
+  transform: translateY(-2px);
+  filter: brightness(0.96);
+}
+
+.secondaryButton {
+  display: inline-flex;
+  text-decoration: none;
+  font-weight: 800;
+  padding: 12px 18px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.35);
+  color: #fff;
+  background: rgba(255,255,255,0.06);
+  transition: transform 160ms ease, background 160ms ease, border-color 160ms ease;
+}
+
+.secondaryButton:hover {
+  transform: translateY(-2px);
+  background: rgba(255,255,255,0.10);
+  border-color: rgba(255,255,255,0.5);
+}
+
+.primaryButton:focus-visible,
+.secondaryButton:focus-visible {
+  outline: 2px solid rgba(255,255,255,0.65);
+  outline-offset: 3px;
+}
+
+/* Grid Layout */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 16px;
+}
+
+/* Maroon Accent Section */
+.maroonSection {
+  background: var(--color-maroon);
+  color: #fff;
+  padding: 90px 0;
+  text-align: center;
+  
+  /* Depth effect */
+  background-image:
+    radial-gradient(1200px 300px at 50% 0%, rgba(255,255,255,0.10), transparent 60%),
+    linear-gradient(180deg, rgba(0,0,0,0.18), rgba(0,0,0,0.00));
+}
+
+/* Media with Overlay */
+.mediaContainer {
+  position: relative;
+  height: clamp(380px, 70vh, 820px);
+  overflow: hidden;
+}
+
+.mediaOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.28);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .section {
+    padding: 60px 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .card {
+    padding: 20px 18px;
+    border-radius: 14px;
+  }
+  
+  .glassCard {
+    padding: 24px 20px;
+  }
+}
